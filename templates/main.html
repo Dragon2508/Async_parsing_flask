@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Staking</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+      <li class="nav-item"><a href="/binance" class="nav-link">Binance</a></li>
+      <li class="nav-item"><a href="/bitrue" class="nav-link">Bitrue</a></li>
+      <!-- <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
+    </ul>
+  </header>
+  <table class="table table-hover text-center  table-borderless table_sort">
+    <thead>
+      <tr>
+        <th scope="col">Криптовалюта</th>
+        <th scope="col">Инвестируете</th>
+        <th scope="col">Годовой процент</th>
+        <th scope="col">Период инвестирования</th>
+        <th scope="col">Брокер</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in crypto_list %}
+        <tr>
+          <td>
+            <img width="30" height="30" src="{{item.image}}" alt="Картинка" />
+            {{ item.baseCoin }}
+          </td>
+          <td>{{ item.lockCoin }}</td>
+          <td>{{ item.procent }} %</td>
+          <td>{{ item.period }} д.</td>
+          <td>{{ item.nameBroker }}</td>
+        </tr>
+      {% endfor %}
+      <!-- {% for item in binance_list %}
+        <tr>
+          <td>
+            <img width="30" height="30" src="{{item.image}}" alt="Картинка" />
+            {{ item.baseCoin }}
+          </td>
+          <td>{{ item.lockCoin }}</td>
+          <td>{{ item.procent }}%</td>
+          <td>{{ item.period }}д.</td>
+          <td>{{ item.nameBroker }}</td>
+        </tr>
+      {% endfor %} -->
+    </tbody>
+  </table>
+</div>
+{% endblock %}
